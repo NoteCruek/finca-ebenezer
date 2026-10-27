@@ -1,0 +1,30 @@
+name: Construir APK y EXE
+on: [workflow_dispatch, push]
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: 17}
+      - run: npm install && npx cap add android
+        working-directory: proyecto-apk
+      - run: npx capacitor-assets generate --android
+        working-directory: proyecto-apk
+        continue-on-error: true
+      - run: npx cap sync android && cd android && chmod +x gradlew && ./gradlew assembleDebug
+        working-directory: proyecto-apk
+      - uses: actions/upload-artifact@v4
+        with: {name: FincaEvenezer-apk, path: proyecto-apk/android/app/build/outputs/apk/debug/app-debug.apk}
+  exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - run: npm install && npm run build-exe
+        working-directory: proyecto-exe
+      - uses: actions/upload-artifact@v4
+        with: {name: FincaEvenezer-exe, path: proyecto-exe/dist/*.exe}
