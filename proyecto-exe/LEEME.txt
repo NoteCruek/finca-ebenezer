@@ -1,0 +1,5 @@
+Para generar el .exe (en Windows con Node.js instalado):
+1) Abre una terminal en esta carpeta
+2) npm install
+3) npm run build-exe
+El instalador queda en la carpeta dist/ (Finca Evenezer Setup.exe y version portable).

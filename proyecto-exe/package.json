@@ -1,0 +1,4 @@
+{"name":"finca-evenezer","version":"1.0.0","description":"Finca Evenezer - Grupo Inversion FM","author":"Grupo Inversion FM","main":"main.js",
+"scripts":{"start":"electron .","build-exe":"electron-builder --win portable nsis","build-deb":"electron-builder --linux deb"},
+"build":{"appId":"com.grupoinversionfm.fincaevenezer","productName":"Finca Evenezer","icon":"build/icon.png","win":{"target":["nsis","portable"]},"linux":{"target":["deb"],"category":"Office","maintainer":"Grupo Inversion FM <contacto@example.com>"}},
+"devDependencies":{"electron":"^31.0.0","electron-builder":"^24.13.3"}}
