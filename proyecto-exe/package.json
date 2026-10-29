@@ -1,0 +1,38 @@
+{
+  "name": "fincamax",
+  "version": "18.0.0",
+  "description": "FincaMax - Grupo Inversion FM",
+  "author": {
+    "name": "Grupo Inversion FM",
+    "email": "app@grupoinversionfm.com"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-exe": "electron-builder --win portable nsis",
+    "build-deb": "electron-builder --linux deb"
+  },
+  "build": {
+    "appId": "com.grupoinversionfm.fincaebenezer",
+    "productName": "FincaMax",
+    "icon": "build/icon.png",
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Office",
+      "maintainer": "Grupo Inversion FM <contacto@example.com>"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "homepage": "https://github.com"
+}
